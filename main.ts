@@ -78,7 +78,7 @@ function initMap () {
     for (let monster_start of tiles.getTilesByType(assets.tile`myTile9`)) {
         placeMonster(boss_monster_image, [monster_start])
     }
-    for (let value of tiles.getTilesByType(assets.tile`myTile7`)) {
+    for (let value of tiles.getTilesByType(assets.tile`store0`)) {
         tiles.setTileAt(tiles.getTileLocation(0, 0), sprites.castle.tilePath5)
         if (0 <= player_weapons.indexOf(store1weaponName)) {
             tiles.placeOnTile(sprites.create(store1purchasedImage, SpriteKind.StoreItem), value)
@@ -467,6 +467,9 @@ function drawArena () {
         textSprite.setBorder(1, 5)
         textSprite2.setPosition(96, 104)
     }
+    monsterLifeTextSprite = textsprite.create("" + monster_name + " " + monster_life, 1, 8)
+    monsterLifeTextSprite.setBorder(1, 8)
+    monsterLifeTextSprite.setPosition(150 - monsterLifeTextSprite.width / 2, 5)
 }
 function chooseClass () {
     in_chooseclass = 1
@@ -627,7 +630,6 @@ sprites.onOverlap(SpriteKind.Player, SpriteKind.StoreItem, function (sprite, oth
 })
 function fightMonster (enemy: Sprite) {
     getMonster(enemy.image)
-    info.player2.setLife(monster_life)
     game.showLongText("prepare to battle the " + monster_name, DialogLayout.Top)
     drawArena()
     in_battle = 1
@@ -704,18 +706,19 @@ function doBattle () {
     } else {
         music.knock.play()
         game.showLongText("You hit with " + player_attack_name + " for " + player_damage + " damage", DialogLayout.Bottom)
-        info.player2.changeLifeBy(player_damage * -1)
-        if (0 >= info.player2.life()) {
+        monster_life += player_damage * -1
+        drawArena()
+        if (0 >= monster_life) {
             music.bigCrash.play()
             game.splash("The monster dies!")
             if (monster_image.equals(boss_monster_image)) {
-                game.over(true)
+                game.over(true, effects.starField)
             }
             getCoins(monster_reward)
             initMap()
         }
     }
-    if (info.player2.hasLife()) {
+    if (0 < monster_life) {
         monster_damage = randint(0, 2)
         if (monster_damage == 0) {
             music.pewPew.play()
@@ -725,7 +728,7 @@ function doBattle () {
             game.showLongText("" + monster_name + " hits you for " + monster_damage + " damage", DialogLayout.Bottom)
             info.changeLifeBy(monster_damage * -1)
             if (info.life() <= 0) {
-                game.over(false)
+                game.over(false, effects.melt)
             }
         }
     }
@@ -739,6 +742,7 @@ let monster_damage = 0
 let player_damage = 0
 let mySprite: Sprite = null
 let textSprite3: TextSprite = null
+let monsterLifeTextSprite: TextSprite = null
 let textSprite: TextSprite = null
 let textSprite2: TextSprite = null
 let attackTextSprite: TextSprite = null
@@ -892,27 +896,27 @@ scene.setBackgroundImage(img`
     ffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff
     ffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff
     ffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff
-    ffffffffffffffffffffffffffffffffffffdfffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff
-    ffffffffffffffffffffffffffffffffffffdfffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff
-    ffffffffffffffffffffffffffffffffffffdffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff7ffffffff7fffffffffffffffffffffffff
-    ffffffffffffffffffffffffffffffffffffdfffffffffffffff7777fffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff7fffffff7ffffffffffffffffffffffffff
+    ffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff
+    ffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff
+    fffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff7ffffffff7fffffffffffffffffffffffff
+    ffffffffffffffffffffffffffffffffffffffffffffffffffff7777fffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff7fffffff7ffffffffffffffffffffffffff
     ffffffffffffffffffffffffffffffffffffdffffffffffffff77ffffffffffffffffffffffffffffffffffffffffffffffffffffffffff7fffffffffffff7fffffff7ffffffffffffffffffffffffff
     ffffffffffffffffffffffffffffffffffffdfffffffffffff77ffffffffffffffff77fffffffffffffff777777777fffffffffffffffff7fffffffffffff7fffffff7ffffffffffffffffffffffffff
-    ffffffffffffffffffffffdffffffffddddddfffffffffffff7fffffffffffffffff77ffffffffffffff7ffffffffffffffffffffffffff77ffffffffffff77ffffff7ffffffffffffffffffffffffff
-    ffffffffffffdddddddfffddddddfffdffffdffffffffffffff7ffffffffffffffff7f7fffffffffffff7fffffffffffffffffffffffff7ff7fffffffffff77ffffff7ffffffffffffffffffffffffff
-    ffffffffffffdffffddfffddfffdfffdffffdffffffffffffff7fffffffffffffff7fff7ffffffffffff7fffffffffffffffffffffffff7ff7fffffffffff7f7fffff7ffffffffffffffffffffffffff
-    ffffffffffffdffffddfffdffffdfffdffffdfffffffffffffff77fffffffffffff7fff7ffffffffffff7fffffffffffffffffffffffff7fff7ffffffffff7f7fffff7ffffffffffffffffffffffffff
-    ffffffffffffdffffddfffdffffdfffdffffdfffffffffffffffff7777ffffffff7fffff7fffffffffff7ffffffffffffffffffffffff7ffff7ffffffffff7ff7ffff7ffffffffffffffffffffffffff
-    ffffffffffffdfffdfdfffdffffdffdfffffdffffffffffffffffffff77fffffff7fffff7fffffffffff7ffffffffffffffffffffffff7fffff7fffffffff7ff7fff7fffffffffffffffffffffffffff
-    ffffffffffffdfffdfdfffdffffdffdfffffdfffffffffffffffffffff7fffffff7ffffff7ffffffffff7fffffffffffffffffffffff7fffffff7ffffffff7fff7ff7fffffffffffffffffffffffffff
-    ffffffffffffdddddfddffdffffdffdffffdddffffffffffffffffffff7ffffff7ffffffff7fffffffff7fffffffffffffffffffffff7fffffff7ffffffff7fff7ff7fffffffffffffffffffffffffff
-    ffffffffffffffffffffffdffffdffdfffddfdffffffffffffffffffff7ffffff7ffffffff7fffffffff7ffffff7777777ffffffffff7777777777fffffff7ffff7f7fffffffffffffffffffffffffff
-    ffffffffffffffffffffffffffffffddfddffdffffffffffffffffffff7ffffff77777777777ffffffff7ffffffffffff7fffffffff7fffffffff7fffffff7ffff7f7fffffffffffffffffffffffffff
-    fffffffffffffffffffffffffffffffdddffffffffffffffffffffffff7fffff7ffffffffff7ffffffff7ffffffffffff7fffffffff7ffffffffff7ffffff7fffff77fffffffffffffffffffffffffff
-    ffffffffffffffffffffffffffffffffffffffffffffffffffffffffff7fffff7fffffffffff7fffffff7ffffffffffff7ffffffff7ffffffffffff7fffff7fffff77fffffffffffffffffffffffffff
-    ffffffffffffffffffffffffffffffffffffffffffffffffffffffffff7ffff7fffffffffffff7ffffff7ffffffffffff7ffffffff7ffffffffffff7ffffffffffff7fffffffffffffffffffffffffff
-    ffffffffffffffffffffffffffffffffffffffffffffffffffffffffff7ffff7fffffffffffff7ffffff7ffffffffffff7ffffffff7fffffffffffff7fffffffffffffffffffffffffffffffffffffff
-    ffffffffffffffffffffffffffffffffffffffffffffffffffffffffff7ffff7ffffffffffffff7ffffff7777777777777fffffff7ffffffffffffffffffffffffffffffffffffffffffffffffffffff
+    ffffffffffffffffffffffffffffffffffffdfffffffffffff7fffffffffffffffff77ffffffffffffff7ffffffffffffffffffffffffff77ffffffffffff77ffffff7ffffffffffffffffffffffffff
+    ffffffffffffffffffffffffffffffffffffdffffffffffffff7ffffffffffffffff7f7fffffffffffff7fffffffffffffffffffffffff7ff7fffffffffff77ffffff7ffffffffffffffffffffffffff
+    ffffffffffffffffffffffffffffffffffffdffffffffffffff7fffffffffffffff7fff7ffffffffffff7fffffffffffffffffffffffff7ff7fffffffffff7f7fffff7ffffffffffffffffffffffffff
+    ffffffffffffffffffffffffffffffffffffdfffffffffffffff77fffffffffffff7fff7ffffffffffff7fffffffffffffffffffffffff7fff7ffffffffff7f7fffff7ffffffffffffffffffffffffff
+    ffffffffffffffffffffffdffffffffddddddfffffffffffffffff7777ffffffff7fffff7fffffffffff7ffffffffffffffffffffffff7ffff7ffffffffff7ff7ffff7ffffffffffffffffffffffffff
+    ffffffffffffdddddddfffddddddfffdffffdffffffffffffffffffff77fffffff7fffff7fffffffffff7ffffffffffffffffffffffff7fffff7fffffffff7ff7fff7fffffffffffffffffffffffffff
+    ffffffffffffdffffddfffddfffdfffdffffdfffffffffffffffffffff7fffffff7ffffff7ffffffffff7fffffffffffffffffffffff7fffffff7ffffffff7fff7ff7fffffffffffffffffffffffffff
+    ffffffffffffdffffddfffdffffdfffdffffdfffffffffffffffffffff7ffffff7ffffffff7fffffffff7fffffffffffffffffffffff7fffffff7ffffffff7fff7ff7fffffffffffffffffffffffffff
+    ffffffffffffdffffddfffdffffdfffdffffdfffffffffffffffffffff7ffffff7ffffffff7fffffffff7ffffff7777777ffffffffff7777777777fffffff7ffff7f7fffffffffffffffffffffffffff
+    ffffffffffffdfffdfdfffdffffdffdfffffdfffffffffffffffffffff7ffffff77777777777ffffffff7ffffffffffff7fffffffff7fffffffff7fffffff7ffff7f7fffffffffffffffffffffffffff
+    ffffffffffffdfffdfdfffdffffdffdfffffdfffffffffffffffffffff7fffff7ffffffffff7ffffffff7ffffffffffff7fffffffff7ffffffffff7ffffff7fffff77fffffffffffffffffffffffffff
+    ffffffffffffdddddfddffdffffdffdffffdddffffffffffffffffffff7fffff7fffffffffff7fffffff7ffffffffffff7ffffffff7ffffffffffff7fffff7fffff77fffffffffffffffffffffffffff
+    ffffffffffffffffffffffdffffdffdfffddfdffffffffffffffffffff7ffff7fffffffffffff7ffffff7ffffffffffff7ffffffff7ffffffffffff7ffffffffffff7fffffffffffffffffffffffffff
+    ffffffffffffffffffffffffffffffddfddffdffffffffffffffffffff7ffff7fffffffffffff7ffffff7ffffffffffff7ffffffff7fffffffffffff7fffffffffffffffffffffffffffffffffffffff
+    fffffffffffffffffffffffffffffffdddffffffffffffffffffffffff7ffff7ffffffffffffff7ffffff7777777777777fffffff7ffffffffffffffffffffffffffffffffffffffffffffffffffffff
     ffffffffffffffffffffffffffffffffffffffffffffffffffffff7777ffff7fffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff
     `)
 game.showLongText("Press A to start", DialogLayout.Bottom)
