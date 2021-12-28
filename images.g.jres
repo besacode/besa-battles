@@ -1,0 +1,37 @@
+{
+    "image1": {
+        "data": "hwQQABAAAAAAAAAAAAAAAAAAAAAAAAAAAAAPAABABAAA8AAAAEAAAAAPAECkoaoKAPAABKCv/0oAAA8AoKqvCgDwAACgqq8KAA8AAKCqrwoA8AAEoK//SgAAD0CkoaoKAAAAAABAAAAAAAAAAEAEAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+        "mimeType": "image/x-mkcd-f4",
+        "displayName": "purple monster"
+    },
+    "image2": {
+        "data": "hwQQABAAAAAAAADw/wAAAAAA8P//AAAAAADw//8AAPAAAPD//wAA//D/8P8PAPD///8P/w8A8P8v////DwD/////////////L/////////////D//////wAA8P8/////AAD/DwD///8AAP//APD//wAA//8AAPD/AAD//w8AAP8AAPD/AAAAAA==",
+        "mimeType": "image/x-mkcd-f4",
+        "displayName": "Reaper"
+    },
+    "image5": {
+        "data": "hwQQABAAAAAAAAB/dwcAAAAA8H93BwAAAAAAcHcHAAAAAAAADwAA8AAAAAAPAAD/////AA8A8A////8ADwD/AP/y/////w8A////////AAD/8v////8PAP///wAPAP8AAAAAAA8A8A8AAAAADwAA/wAAAHB3BwDwAADwf3cHAAAAAAB/dwcAAA==",
+        "mimeType": "image/x-mkcd-f4",
+        "displayName": "Demolitionist"
+    },
+    "image4": {
+        "data": "hwQQABAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAP8PAAAAAADwVfUAAAAAAB9VVQ8AAADw9VVfDw8AAPBV9VUPD/8A8FX1Vf//AADw9VVfDw//AAAfVVUPDwAAAPBV9QAAAAAAAP8PAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+        "mimeType": "image/x-mkcd-f4",
+        "displayName": "the angry person"
+    },
+    "image3": {
+        "data": "hwQQABAAAAD//w8AAAAAAA8PDwBwAAAA8PAAAHcAAAAAAABw8Q8AAPD/AH9/f3AADwAPf3d/BwAPAA9/f39wAA8AD/DxDwAA8P8AAH8AAAAAAAAAcAAAAPD/DwAAAAAADwAA8P//AADw/w/w8PAAAA8AAAAPDwAA8P8PAAAAAAAAAAAAAAAAAA==",
+        "mimeType": "image/x-mkcd-f4",
+        "displayName": "big bomb"
+    },
+    "image6": {
+        "data": "hwQQABAAAAAAAJkJAAAAAACQkpmZmQkAAACZCQAPAAD/////AA8AAPIv//8ADwAAL///////////8v////////8v/////w8A//L/////DwAv//////////Iv/////////////wAPAAD/////AA8AAAAAIgIADwAAACApIiIiAgAAACICAAAAAA==",
+        "mimeType": "image/x-mkcd-f4",
+        "displayName": "Evil Sorcerer"
+    },
+    "*": {
+        "mimeType": "image/x-mkcd-f4",
+        "dataEncoding": "base64",
+        "namespace": "myImages"
+    }
+}
