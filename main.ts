@@ -4,6 +4,127 @@ namespace SpriteKind {
     export const StoreItem = SpriteKind.create()
     export const HUD = SpriteKind.create()
 }
+function getStoreItem (itemName: string) {
+    if (itemName == "AXE") {
+        if (playerHasWeapon("AXE")) {
+            storeItemSprite = sprites.create(img`
+                . . . . . . . . . . . . . . . . 
+                . . . . . . . e e e . . . . . . 
+                . . . e . e e 9 e 9 e e . e . . 
+                . . e 9 e 9 9 9 e 9 9 9 e 9 e . 
+                . . . e 9 9 9 9 e 9 9 9 9 e . . 
+                . . e 9 e 9 9 9 e 9 9 9 e 9 e . 
+                . . . e . e e 9 e 9 e e . e . . 
+                . . . . . . . e e e . . . . . . 
+                . . . . . . . . e . . . . . . . 
+                . . . . . . . . e . . . . . . . 
+                . . . . . . . . e . . . . . . . 
+                . . . . . . . . e . . . . . . . 
+                . . . . . . . . e . . . . . . . 
+                . . . . . . . . e . . . . . . . 
+                . . . . . . . . e . . . . . . . 
+                . . . . . . . . . . . . . . . . 
+                `, SpriteKind.StoreItem)
+        } else {
+            storeItemSprite = sprites.create(img`
+                7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 
+                7 7 7 7 7 7 7 e e e 7 7 7 7 7 7 
+                7 7 7 e 7 e e 9 e 9 e e 7 e 7 7 
+                7 7 e 9 e 9 9 9 e 9 9 9 e 9 e 7 
+                7 7 7 e 9 9 9 9 e 9 9 9 9 e 7 7 
+                7 7 e 9 e 9 9 9 e 9 9 9 e 9 e 7 
+                7 7 7 e 7 e e 9 e 9 e e 7 e 7 7 
+                7 7 7 7 7 7 7 e e e 7 7 7 7 7 7 
+                7 7 7 7 7 7 7 7 e 7 7 7 7 7 7 7 
+                7 7 7 7 7 7 7 7 e 7 7 7 7 7 7 7 
+                7 7 7 7 7 7 7 7 e 7 7 7 7 7 7 7 
+                7 7 7 7 7 7 7 7 e 7 7 7 7 7 7 7 
+                7 7 7 7 7 7 7 7 e 7 7 7 7 7 7 7 
+                7 7 7 7 7 7 7 7 e 7 7 7 7 7 7 7 
+                7 7 7 7 7 7 7 7 e 7 7 7 7 7 7 7 
+                7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 
+                `, SpriteKind.StoreItem)
+            sprites.setDataNumber(storeItemSprite, "cost", 10)
+            sprites.setDataString(storeItemSprite, "shopName", "axe")
+            sprites.setDataString(storeItemSprite, "weaponName", "AXE")
+            sprites.setDataBoolean(storeItemSprite, "available", true)
+        }
+    } else if (itemName == "BIG BOMB") {
+        if (playerHasWeapon("BIG BOMB")) {
+            storeItemSprite = sprites.create(img`
+                . . . . . 5 e e . . . . . . . . 
+                . . . . . . . e . . . . . . . . 
+                . . . . . . . e . . . . . . . . 
+                . . . . f f f f f f f . . . . . 
+                . . . f f f f f f f f f . . . . 
+                . . f f f f f f f f f f f . . . 
+                . f f f f f f f f f f f f f . . 
+                . f f f f f f f f f f f f f . . 
+                . f f f f f f f f f f f f f . . 
+                . f f f f f f f f f f f f f . . 
+                . f f f f f f f f f f f f f . . 
+                . f f f f f f f f f f f f f . . 
+                . f f f f f f f f f f f f f . . 
+                . . f f f f f f f f f f f . . . 
+                . . . f f f f f f f f f . . . . 
+                . . . . f f f f f f f . . . . . 
+                `, SpriteKind.StoreItem)
+        } else {
+            storeItemSprite = sprites.create(img`
+                7 7 7 7 7 5 e e 7 7 7 7 7 7 7 7 
+                7 7 7 7 7 7 7 e 7 7 7 7 7 7 7 7 
+                7 7 7 7 7 7 7 e 7 7 7 7 7 7 7 7 
+                7 7 7 7 f f f f f f f 7 7 7 7 7 
+                7 7 7 f f f f f f f f f 7 7 7 7 
+                7 7 f f f f f f f f f f f 7 7 7 
+                7 f f f f f f f f f f f f f 7 7 
+                7 f f f f f f f f f f f f f 7 7 
+                7 f f f f f f f f f f f f f 7 7 
+                7 f f f f f f f f f f f f f 7 7 
+                7 f f f f f f f f f f f f f 7 7 
+                7 f f f f f f f f f f f f f 7 7 
+                7 f f f f f f f f f f f f f 7 7 
+                7 7 f f f f f f f f f f f 7 7 7 
+                7 7 7 f f f f f f f f f 7 7 7 7 
+                7 7 7 7 f f f f f f f 7 7 7 7 7 
+                `, SpriteKind.StoreItem)
+            sprites.setDataNumber(storeItemSprite, "cost", 8)
+            sprites.setDataString(storeItemSprite, "shopName", "big bombs")
+            sprites.setDataString(storeItemSprite, "weaponName", "BIG BOMB")
+            sprites.setDataBoolean(storeItemSprite, "available", true)
+        }
+    } else if (itemName == "5HEARTS") {
+        if (playerHasItem("5HEARTS")) {
+            storeItemSprite = sprites.create(img`
+                . . . . . . . . . . . . . . . . 
+                . . 2 2 . . . 2 2 . . . . . . . 
+                . 2 2 2 2 . 2 2 2 2 . . . . . . 
+                . 2 2 2 2 2 2 2 2 2 . . . . . . 
+                . . 2 2 2 2 2 2 2 . . . . . . . 
+                . . . 2 2 2 2 2 . . . . . . . . 
+                . . . . 2 2 2 . . . . . . . . . 
+                . . . . . 2 . . . . . . . . . . 
+                . . . . . . . . . . . . . . . . 
+                . . . . . . . . . . . . . . . . 
+                . . . . . . . . . . . . . . . . 
+                . . . . . . . . . . . . . . . . 
+                . . . . . . . . . . . . . . . . 
+                . . . . . . . . . . . . . . . . 
+                . . . . . . . . . . . . . . . . 
+                . . . . . . . . . . . . . . . . 
+                `, SpriteKind.StoreItem)
+        } else {
+            storeItemSprite = sprites.create(assets.image`5hearts`, SpriteKind.StoreItem)
+            sprites.setDataNumber(storeItemSprite, "cost", 10)
+            sprites.setDataString(storeItemSprite, "shopName", "5 hearts")
+            sprites.setDataString(storeItemSprite, "itemName", "5HEARTS")
+            sprites.setDataBoolean(storeItemSprite, "available", true)
+        }
+    } else {
+        game.splash("unknown store item: " + itemName)
+    }
+    return storeItemSprite
+}
 sprites.onOverlap(SpriteKind.Player, SpriteKind.Coin, function (sprite, otherSprite) {
     getCoins(1)
     otherSprite.destroy()
@@ -26,14 +147,19 @@ controller.B.onEvent(ControllerButtonEvent.Pressed, function () {
         showStatus()
     }
 })
+function playerHasItem (itemName: string) {
+    return 0 <= player_items.indexOf(itemName)
+}
 controller.A.onEvent(ControllerButtonEvent.Pressed, function () {
     if (in_battle) {
         doBattle()
     } else if (in_chooseclass) {
         finishChooseclass()
     } else {
-        if (playerSprite.overlapsWith(store1Sprite)) {
-            vendItem(store1shopName, store1cost, store1weaponName)
+        for (let value of sprites.allOfKind(SpriteKind.StoreItem)) {
+            if (playerSprite.overlapsWith(value)) {
+                vendItemSprite(value)
+            }
         }
     }
 })
@@ -78,15 +204,7 @@ function initMap () {
     for (let monster_start of tiles.getTilesByType(assets.tile`myTile9`)) {
         placeMonster(boss_monster_image, [monster_start])
     }
-    for (let value of tiles.getTilesByType(assets.tile`store0`)) {
-        tiles.setTileAt(tiles.getTileLocation(0, 0), sprites.castle.tilePath5)
-        if (0 <= player_weapons.indexOf(store1weaponName)) {
-            tiles.placeOnTile(sprites.create(store1purchasedImage, SpriteKind.StoreItem), value)
-        } else {
-            store1Sprite = sprites.create(store1forsaleImage, SpriteKind.StoreItem)
-            tiles.placeOnTile(store1Sprite, value)
-        }
-    }
+    fillStores()
     playerSprite.z = 99
 }
 function getMonster (monsterImage: Image) {
@@ -124,24 +242,24 @@ function getMonster (monsterImage: Image) {
         monster_life = 7
         monster_reward = 3
     } else if (monsterImage.equals(img`
-        . f f f f f . . . . . f f . . . 
-        . f 1 4 1 f . . . . f 1 3 f . . 
-        . f 4 4 4 f . . . f f 3 3 f . . 
-        . f f f f f . . . . f f 3 f . . 
-        . . f f f . . . . . . f f f . . 
-        . f f f f f . . . . f f f f f . 
-        . f . f . f . . . . f . f . f . 
-        . . . f . . . . . . . . f . . . 
-        . . . f . . . . . . . . f . . . 
-        . . . f . . . . . . . . f . . . 
-        . . . f f . . . . . . . f f . . 
-        . . . f f . . . . . . . f f . . 
-        . . f f . f . . . . . f . . f . 
-        . . f . . f . . . . . f . . f . 
-        . f . . . f . . . . f . . . f . 
         . . . . . . . . . . . . . . . . 
+        . . . . . . . . . . . . . . . . 
+        . . . . . . . . . . . . . . . . 
+        . . . . . . . . . . . . . . . . 
+        . . . . . . . . . . . . . . . . 
+        . . . . . . . . . . . f f f . . 
+        . . . . . . . . . . f d f d f . 
+        . . . . . . . . . . f d d d f . 
+        . . . . . . . . . . . f f f . . 
+        . . . . . . . . . . . . . f . . 
+        . . . . . . . . . . . . f f f . 
+        . . . . 3 3 3 3 . . . f . f . f 
+        . . 3 3 f 3 3 f 3 . . . . f . . 
+        . . 3 3 3 3 3 3 3 . . . . f . . 
+        3 3 3 3 3 3 3 3 3 3 3 . f . f . 
+        3 3 3 3 3 3 3 3 3 3 3 f . . . f 
         `)) {
-        monster_name = "two monsters"
+        monster_name = "blob & cyclops"
         monster_reward = 2
         monster_life = 10
     } else if (monsterImage.equals(img`
@@ -255,6 +373,9 @@ sprites.onOverlap(SpriteKind.Player, SpriteKind.Bomb, function (sprite, otherSpr
     player_bombs += 1
     otherSprite.destroy(effects.rings, 500)
 })
+function playerHasWeapon (weaponName: string) {
+    return 0 <= player_weapons.indexOf(weaponName)
+}
 function finishChooseclass () {
     in_chooseclass = 0
     loadClass()
@@ -275,106 +396,46 @@ function placeMonster (monsterImage: Image, monsterStart: any[]) {
         newMonsterSprite.destroy()
     }
 }
-function initClass () {
-    player_weapons = []
-    if (player_class_name == "WARRIOR") {
-        player_weapons.push("SWORD")
-        store1shopName = "axe"
-        store1cost = 10
-        store1weaponName = "AXE"
-        store1forsaleImage = img`
-            7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 
-            7 7 7 7 7 7 7 7 e 7 7 7 7 7 7 7 
-            7 7 7 7 7 7 7 9 e 9 7 7 7 7 7 7 
-            7 7 7 9 7 9 9 9 e 9 9 9 7 9 7 7 
-            7 7 7 7 9 9 9 9 e 9 9 9 9 7 7 7 
-            7 7 7 9 7 9 9 9 e 9 9 9 7 9 7 7 
-            7 7 7 7 7 7 7 9 e 9 7 7 7 7 7 7 
-            7 7 7 7 7 7 7 7 e 7 7 7 7 7 7 7 
-            7 7 7 7 7 7 7 7 e 7 7 7 7 7 7 7 
-            7 7 7 7 7 7 7 7 e 7 7 7 7 7 7 7 
-            7 7 7 7 7 7 7 7 e 7 7 7 7 7 7 7 
-            7 7 7 7 7 7 7 7 e 7 7 7 7 7 7 7 
-            7 7 7 7 7 7 7 7 e 7 7 7 7 7 7 7 
-            7 7 7 7 7 7 7 7 e 7 7 7 7 7 7 7 
-            7 7 7 7 7 7 7 7 e 7 7 7 7 7 7 7 
-            7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 
-            `
-        store1purchasedImage = img`
-            . . . . . . . . . . . . . . . . 
-            . . . . . . . . e . . . . . . . 
-            . . . . . . . 9 e 9 . . . . . . 
-            . . . 9 . 9 9 9 e 9 9 9 . 9 . . 
-            . . . . 9 9 9 9 e 9 9 9 9 . . . 
-            . . . 9 . 9 9 9 e 9 9 9 . 9 . . 
-            . . . . . . . 9 e 9 . . . . . . 
-            . . . . . . . . e . . . . . . . 
-            . . . . . . . . e . . . . . . . 
-            . . . . . . . . e . . . . . . . 
-            . . . . . . . . e . . . . . . . 
-            . . . . . . . . e . . . . . . . 
-            . . . . . . . . e . . . . . . . 
-            . . . . . . . . e . . . . . . . 
-            . . . . . . . . e . . . . . . . 
-            . . . . . . . . . . . . . . . . 
-            `
-    } else if (player_class_name == "DEMOLITIONIST") {
-        player_weapons.push("SMALL BOMB")
-        monsterList.push(assets.image`big bomb`)
-        store1shopName = "big bombs"
-        store1cost = 8
-        store1weaponName = "BIG BOMB"
-        store1forsaleImage = img`
-            7 7 7 7 7 5 e e 7 7 7 7 7 7 7 7 
-            7 7 7 7 7 7 7 e 7 7 7 7 7 7 7 7 
-            7 7 7 7 7 7 7 e 7 7 7 7 7 7 7 7 
-            7 7 7 7 f f f f f f f 7 7 7 7 7 
-            7 7 7 f f f f f f f f f 7 7 7 7 
-            7 7 f f f f f f f f f f f 7 7 7 
-            7 f f f f f f f f f f f f f 7 7 
-            7 f f f f f f f f f f f f f 7 7 
-            7 f f f f f f f f f f f f f 7 7 
-            7 f f f f f f f f f f f f f 7 7 
-            7 f f f f f f f f f f f f f 7 7 
-            7 f f f f f f f f f f f f f 7 7 
-            7 f f f f f f f f f f f f f 7 7 
-            7 7 f f f f f f f f f f f 7 7 7 
-            7 7 7 f f f f f f f f f 7 7 7 7 
-            7 7 7 7 f f f f f f f 7 7 7 7 7 
-            `
-        store1purchasedImage = img`
-            . . . . . 5 e e . . . . . . . . 
-            . . . . . . . e . . . . . . . . 
-            . . . . . . . e . . . . . . . . 
-            . . . . f f f f f f f . . . . . 
-            . . . f f f f f f f f f . . . . 
-            . . f f f f f f f f f f f . . . 
-            . f f f f f f f f f f f f f . . 
-            . f f f f f f f f f f f f f . . 
-            . f f f f f f f f f f f f f . . 
-            . f f f f f f f f f f f f f . . 
-            . f f f f f f f f f f f f f . . 
-            . f f f f f f f f f f f f f . . 
-            . f f f f f f f f f f f f f . . 
-            . . f f f f f f f f f f f . . . 
-            . . . f f f f f f f f f . . . . 
-            . . . . f f f f f f f . . . . . 
-            `
+function vendItemSprite (mySprite: Sprite) {
+    cost = sprites.readDataNumber(mySprite, "cost")
+    shopName = sprites.readDataString(mySprite, "shopName")
+    weaponName = sprites.readDataString(mySprite, "weaponName")
+    itemName = sprites.readDataString(mySprite, "itemName")
+    if (!(sprites.readDataBoolean(mySprite, "available"))) {
+        return
     }
-}
-function vendItem (shopName: string, cost: number, weaponName: string) {
     if (cost > info.score()) {
         game.showLongText("The " + shopName + " costs " + cost, DialogLayout.Bottom)
     } else {
         if (game.ask("Buy the " + shopName + " for " + cost + "?")) {
             info.changeScoreBy(-1 * cost)
-            player_weapons.push(weaponName)
+            if (!(weaponName.isEmpty())) {
+                player_weapons.push(weaponName)
+            }
+            if (!(itemName.isEmpty())) {
+                player_items.push(itemName)
+                getItem(itemName)
+            }
             music.powerUp.play()
             player_x = playerSprite.x
             player_y = playerSprite.y
             initMap()
         }
     }
+}
+function initClass () {
+    player_weapons = []
+    player_items = []
+    store_items = []
+    if (player_class_name == "WARRIOR") {
+        player_weapons.push("SWORD")
+        store_items.push("AXE")
+    } else if (player_class_name == "DEMOLITIONIST") {
+        player_weapons.push("SMALL BOMB")
+        monsterList.push(assets.image`big bomb`)
+        store_items.push("BIG BOMB")
+    }
+    store_items.push("5HEARTS")
 }
 function drawArena () {
     loadWeapon()
@@ -604,8 +665,13 @@ function chooseClass () {
     classChoiceIndex = 0
     loadClass()
 }
+function getItem (itemName: string) {
+    if (itemName == "5HEARTS") {
+        player_max_life += 5
+    }
+}
 sprites.onOverlap(SpriteKind.Player, SpriteKind.StoreItem, function (sprite, otherSprite) {
-    if (0 > player_weapons.indexOf(store1weaponName)) {
+    if (sprites.readDataBoolean(otherSprite, "available")) {
         mySprite = sprites.create(img`
             . . . . . . . . . . . . . . . . 
             . . . . . . . . . . . . . . . . 
@@ -733,6 +799,16 @@ function doBattle () {
         }
     }
 }
+function fillStores () {
+    for (let value of tiles.getTilesByType(assets.tile`store0`)) {
+        tiles.setTileAt(value, sprites.castle.tilePath5)
+        tiles.placeOnTile(getStoreItem(store_items[0]), value)
+    }
+    for (let value of tiles.getTilesByType(assets.tile`store1`)) {
+        tiles.setTileAt(value, sprites.castle.tilePath5)
+        tiles.placeOnTile(getStoreItem(store_items[1]), value)
+    }
+}
 sprites.onOverlap(SpriteKind.Player, SpriteKind.Enemy, function (sprite, otherSprite) {
     player_x = playerSprite.x
     player_y = playerSprite.y
@@ -740,12 +816,17 @@ sprites.onOverlap(SpriteKind.Player, SpriteKind.Enemy, function (sprite, otherSp
 })
 let monster_damage = 0
 let player_damage = 0
-let mySprite: Sprite = null
 let textSprite3: TextSprite = null
 let monsterLifeTextSprite: TextSprite = null
 let textSprite: TextSprite = null
 let textSprite2: TextSprite = null
 let attackTextSprite: TextSprite = null
+let store_items: string[] = []
+let itemName = ""
+let weaponName = ""
+let shopName = ""
+let mySprite: Sprite = null
+let cost = 0
 let newMonsterSprite: Sprite = null
 let spriteKind = 0
 let newMonster: Image = null
@@ -758,18 +839,14 @@ let monster_life = 0
 let monster_name = ""
 let monster_image: Image = null
 let monster_reward = 0
-let store1forsaleImage: Image = null
-let store1purchasedImage: Image = null
 let tempCoin: Sprite = null
-let store1weaponName = ""
-let store1cost = 0
-let store1shopName = ""
-let store1Sprite: Sprite = null
 let playerSprite: Sprite = null
+let player_items: string[] = []
 let classChoiceIndex = 0
 let player_weapons: string[] = []
 let in_chooseclass = 0
 let in_battle = 0
+let storeItemSprite: Sprite = null
 let boss_monster_image: Image = null
 let monsterListLvl2: Image[] = []
 let monsterList: Image[] = []
@@ -969,22 +1046,22 @@ monsterList.push(assets.image`purple monster`)
 monsterList.push(assets.image`Reaper`)
 monsterList.push(assets.image`the angry person`)
 monsterListLvl2.push(img`
-    . f f f f f . . . . . f f . . . 
-    . f 1 4 1 f . . . . f 1 3 f . . 
-    . f 4 4 4 f . . . f f 3 3 f . . 
-    . f f f f f . . . . f f 3 f . . 
-    . . f f f . . . . . . f f f . . 
-    . f f f f f . . . . f f f f f . 
-    . f . f . f . . . . f . f . f . 
-    . . . f . . . . . . . . f . . . 
-    . . . f . . . . . . . . f . . . 
-    . . . f . . . . . . . . f . . . 
-    . . . f f . . . . . . . f f . . 
-    . . . f f . . . . . . . f f . . 
-    . . f f . f . . . . . f . . f . 
-    . . f . . f . . . . . f . . f . 
-    . f . . . f . . . . f . . . f . 
     . . . . . . . . . . . . . . . . 
+    . . . . . . . . . . . . . . . . 
+    . . . . . . . . . . . . . . . . 
+    . . . . . . . . . . . . . . . . 
+    . . . . . . . . . . . . . . . . 
+    . . . . . . . . . . . f f f . . 
+    . . . . . . . . . . f d f d f . 
+    . . . . . . . . . . f d d d f . 
+    . . . . . . . . . . . f f f . . 
+    . . . . . . . . . . . . . f . . 
+    . . . . . . . . . . . . f f f . 
+    . . . . 3 3 3 3 . . . f . f . f 
+    . . 3 3 f 3 3 f 3 . . . . f . . 
+    . . 3 3 3 3 3 3 3 . . . . f . . 
+    3 3 3 3 3 3 3 3 3 3 3 . f . f . 
+    3 3 3 3 3 3 3 3 3 3 3 f . . . f 
     `)
 monsterListLvl2.push(img`
     . 2 2 2 2 2 . . . . . 2 2 . . . 

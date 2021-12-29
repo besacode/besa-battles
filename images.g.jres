@@ -29,6 +29,11 @@
         "mimeType": "image/x-mkcd-f4",
         "displayName": "Evil Sorcerer"
     },
+    "image7": {
+        "data": "hwQQABAAAABwdwcAAAAAAHcidwAAAAAAJyJyBwAAAAAnIiJ38ADwAHciInIHDw8AcCciIgfwAAB3IiJyBw8PACciInfwAPAAJyJyBwAAAAB3IncAAAAAAHd3B/D/AA8AAAAA8AAP8AAAAADwAA/wAAAAAPAA8A8AAAAAAAAAAAAAAAAAAAAAAA==",
+        "mimeType": "image/x-mkcd-f4",
+        "displayName": "5hearts"
+    },
     "*": {
         "mimeType": "image/x-mkcd-f4",
         "dataEncoding": "base64",
