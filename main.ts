@@ -115,7 +115,7 @@ function getStoreItem (itemName: string) {
                 `, SpriteKind.StoreItem)
         } else {
             storeItemSprite = sprites.create(assets.image`5hearts`, SpriteKind.StoreItem)
-            sprites.setDataNumber(storeItemSprite, "cost", 10)
+            sprites.setDataNumber(storeItemSprite, "cost", 20)
             sprites.setDataString(storeItemSprite, "shopName", "5 hearts")
             sprites.setDataString(storeItemSprite, "itemName", "5HEARTS")
             sprites.setDataBoolean(storeItemSprite, "available", true)
@@ -697,6 +697,7 @@ sprites.onOverlap(SpriteKind.Player, SpriteKind.StoreItem, function (sprite, oth
 function fightMonster (enemy: Sprite) {
     getMonster(enemy.image)
     game.showLongText("prepare to battle the " + monster_name, DialogLayout.Top)
+    scene.centerCameraAt(0, 0)
     drawArena()
     in_battle = 1
 }
